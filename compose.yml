@@ -1,0 +1,14 @@
+services:
+  iop-sample-web-api:
+    build: ./iop-sample-web-api
+    container_name: iop-sample-web-api
+    ports:
+      - "8000:8000"
+    env_file: ./iop-sample-web-api/.env.docker
+  iop-sample-app:
+    build: ./iop-sample-app
+    container_name: iop-sample-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - iop-sample-web-api
